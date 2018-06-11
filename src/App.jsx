@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import First from './First'
+import Second from './Second'
 import './App.css';
 import Navbar from './navbar';
 
@@ -11,6 +12,11 @@ class App extends Component {
         <section>
           <div className="container">
             <First />
+          </div>
+        </section>
+        <section>
+          <div className="container">
+            <Second title="title" content="content2" />
           </div>
         </section>
       </div>
