@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import First from './first'
+import First from './First'
 import './App.css';
 import Navbar from './navbar';
 
@@ -8,10 +8,11 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar />
-        <First />
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <section>
+          <div className="container">
+            <First />
+          </div>
+        </section>
       </div>
     );
   }
