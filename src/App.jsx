@@ -16,7 +16,7 @@ class App extends Component {
         </section>
         <section>
           <div className="container">
-            <Second title="title" content="content2" />
+            <Second title="this is title" content="this is content" />
           </div>
         </section>
       </div>
