@@ -11,7 +11,7 @@ class App extends Component {
         <Navbar />
         <section>
           <div className="container">
-            <First />
+            <First name="World" />
           </div>
         </section>
         <section>
