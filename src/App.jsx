@@ -4,6 +4,7 @@ import Second from './Second'
 import './App.css';
 import Navbar from './navbar';
 import ThirdParent from './Third_parent';
+import Api1 from './Api1';
 
 class App extends Component {
   render() {
@@ -23,6 +24,11 @@ class App extends Component {
         <section>
           <div className="container">
             <ThirdParent />
+          </div>
+        </section>
+        <section>
+          <div className="container">
+            <Api1 />
           </div>
         </section>
       </div>
