@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 class Header extends Component {
     render() {
         const links = [
-            { url: '#', text: 'Products', page:'Products' },
+            { url: '#', text: 'Products', page:'' },
             { url: '#', text: 'First', page:'First' },
             { url: '#', text: 'Second', page:'Second' },
             { url: '#', text: 'ThirdParent', page:'ThirdParent' },

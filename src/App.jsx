@@ -23,8 +23,8 @@ class App extends Component {
           <section>
             <div className="container">
               <Switch>
-                <Redirect exact from="/" to="/Products"/>
-                <Route path="/Products" component={Products} />
+                {/* <Redirect exact from="/" to="/Products"/> */}
+                <Route path="/" exact component={Products} />
                 <Route path="/First" render={(props) => <First {...props} name="World" /> } />
                 <Route path="/Second" render={(props) => <Second {...props} title="this is title" content="this is content" /> } />
                 <Route path="/ThirdParent" component={ThirdParent} />
