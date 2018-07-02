@@ -17,12 +17,19 @@ class Products extends Component {
             { id: 4, price: 1500, description: 'Lorem ipsum dolor sit amet lorem. Integer mi metus, ullamcorper tellus et dui. Suspendisse egestas imperdiet sapien. In pede.  Curabitur et ligula.' },
             { id: 5, price: 750, description: 'Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies.' },
         ];
-        return <div className="App-content">{products.map(this.renderProduct)}</div>; 
+        return (
+            <div>
+                <p>{this.state.orderSum}</p>
+                <div className="App-content">{products.map(this.renderProduct)}</div>
+            </div>
+        )
     }
     renderProduct = ({id, price, description}) => {
-        return <div className="App-product">
-                    <Product id={id} price={price} description={description} addToCart={this.addToCart} />
-                </div>; 
+        return (
+            <div className="App-product">
+                <Product id={id} price={price} description={description} addToCart={this.addToCart} />
+            </div>
+        )        
     }
     addToCart = (price) => {
         this.setState({ orderSum: this.state.orderSum + price })
