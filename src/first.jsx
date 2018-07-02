@@ -21,11 +21,11 @@ class First extends Component {
                 <form className="form-inline" action="/action_page.php">
                     <div className="form-group">
                         <label htmlFor="firstName">Imię</label>
-                        <input type="text" className="form-control" id="firstName" value={this.state.firstName} onInput={this.changeFirstName} />
+                        <input type="text" className="form-control" id="firstName" defaultValue={this.state.firstName} onInput={this.changeFirstName} />
                     </div>
                     <div className="form-group">
                         <label htmlFor="lastName">Imię</label>
-                        <input type="text" className="form-control" id="lastName" value={this.state.lastName} onInput={this.changeLastName} />
+                        <input type="text" className="form-control" id="lastName" defaultValue={this.state.lastName} onInput={this.changeLastName} />
                     </div>
                 </form>
                 <output>{this.state.firstName}&nbsp;{this.state.lastName}</output>

@@ -14,7 +14,7 @@ class ThirdParent extends Component {
                 <form className="form-inline" action="/action_page.php">
                     <div className="form-group">
                         <label htmlFor="term">Term</label>
-                        <input type="text" className="form-control" id="term" value={this.state.term} onInput={this.changeTerm} />
+                        <input type="text" className="form-control" id="term" defaultValue={this.state.term} onInput={this.changeTerm} />
                     </div>
                 </form>
                 <ThirdChild term={this.state.term} />
