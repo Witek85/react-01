@@ -1,0 +1,12 @@
+.App-content {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 10px;
+}
+
+.App-product {
+  border: 1px solid black;
+  flex-basis: 32%;
+  padding: 10px;
+  margin: 10px 0.66%;
+}

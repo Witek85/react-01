@@ -3,6 +3,7 @@ import First from './First'
 import Second from './Second'
 import './App.css';
 import Header from './Header';
+import Products from './Products';
 import ThirdParent from './Third_parent';
 import Api1 from './Api1';
 
@@ -11,6 +12,11 @@ class App extends Component {
     return (
       <main className="App">
         <Header />
+        <section>
+          <div className="container">
+            <Products />
+          </div>
+        </section>
         <section>
           <div className="container">
             <Second title="this is title" content="this is content" />
