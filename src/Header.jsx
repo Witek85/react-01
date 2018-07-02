@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Header extends Component {
     render() {
@@ -29,11 +30,11 @@ class Header extends Component {
         ) 
     }
     renderLink = ({url, text, page}) => {
-        return <li key={text}>
-            <a href={url} className="my-awesome-link" onClick={()=>this.props.changePage(page)} >
-                {text}
-            </a>
-            </li>; 
+        return (
+            <li key={text}>
+                <Link to={page}>{text}</Link>
+            </li>
+        )
     }
     // handleClick = (text) => {
     //     console.log('clicked link with text: ', text);
@@ -43,3 +44,7 @@ class Header extends Component {
 export default Header;
 
 // onClick={() =>this.handleClick(text)}
+
+// <a href={url} className="my-awesome-link" onClick={()=>this.props.changePage(page)} >
+//                 {text}
+//             </a>

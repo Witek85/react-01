@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import First from './First'
 import Second from './Second'
 import './App.css';
@@ -11,40 +12,31 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-        currentPage: "Products"
+        currentPage: ""
     };
   }
   render() {
     return (
-      <main className="App">
-        <Header changePage={this.changePage} />
-        {this.renderContent()}
-      </main>
+      <Router>
+        <main className="App">
+          <Header/>
+          <section>
+            <div className="container">
+              <Switch>
+                <Redirect exact from="/" to="/Products"/>
+                <Route path="/Products" component={Products} />
+                <Route path="/First" render={(props) => <First {...props} name="World" /> } />
+                <Route path="/Second" render={(props) => <Second {...props} title="this is title" content="this is content" /> } />
+                <Route path="/ThirdParent" component={ThirdParent} />
+                <Route path="/Api1" component={Api1} />
+                <Route render={() => <div>Sorry, page is not found</div>}/>
+              </Switch>
+            </div>
+          </section>
+        </main>
+      </Router>
     );
   }
-  renderContent() {
-    if (this.state.currentPage === "Products") {
-      return (
-        <section>
-        <div className="container">
-          <Products />
-        </div>
-      </section>
-      )
-    } else if (this.state.currentPage === "First") {
-      return (<section><div className="container"><First name="World" /></div></section>)
-    } else if (this.state.currentPage === "Second") {
-      return (<section><div className="container"><Second title="this is title" content="this is content" /></div></section>)
-    } else if (this.state.currentPage === "ThirdParent") {
-      return (<section><div className="container"><ThirdParent /></div></section>)
-    } else if (this.state.currentPage === "Api1") {
-      return (<section><div className="container"><Api1 /></div></section>)
-    }
-  }
-  changePage = (page) => {
-    this.setState({ currentPage: page })
-    console.log('currentPage: ', page);
-}
 }
 
 export default App;
