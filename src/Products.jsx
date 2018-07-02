@@ -26,7 +26,7 @@ class Products extends Component {
     }
     renderProduct = ({id, price, description}) => {
         return (
-            <div className="App-product">
+            <div key={id} className="App-product">
                 <Product id={id} price={price} description={description} addToCart={this.addToCart} />
             </div>
         )        

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import First from './First'
 import Second from './Second'
 import './App.css';
 import Header from './Header';
 import Products from './Products';
+import News from './News';
 import ThirdParent from './Third_parent';
 import Api1 from './Api1';
 
@@ -25,6 +26,7 @@ class App extends Component {
               <Switch>
                 {/* <Redirect exact from="/" to="/Products"/> */}
                 <Route path="/" exact component={Products} />
+                <Route path="/News" component={News}/>
                 <Route path="/First" render={(props) => <First {...props} name="World" /> } />
                 <Route path="/Second" render={(props) => <Second {...props} title="this is title" content="this is content" /> } />
                 <Route path="/ThirdParent" component={ThirdParent} />
