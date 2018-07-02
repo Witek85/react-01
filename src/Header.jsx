@@ -15,7 +15,9 @@ class Header extends Component {
                     </button>
                     <a className="navbar-brand" href="#">Welcome to React</a>
                 </div>
-                    <Navbar />
+                    <div id="navbar" className="navbar-collapse collapse">
+                        <Navbar />
+                    </div>
                 </div>
           </nav>
         );
