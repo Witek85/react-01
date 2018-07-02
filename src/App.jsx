@@ -9,7 +9,7 @@ import Api1 from './Api1';
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <main className="App">
         <Header />
         <section>
           <div className="container">
@@ -31,7 +31,7 @@ class App extends Component {
             <Api1 />
           </div>
         </section>
-      </div>
+      </main>
     );
   }
 }
