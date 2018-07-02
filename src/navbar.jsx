@@ -3,13 +3,20 @@ import React, { Component } from 'react';
 class Navbar extends Component {
     render() {
         const links = [
-            { url: 'https://someurl.com', text: 'First link' },
-            { url: 'https://someurl.com', text: 'Second link' }
+            { url: '#', text: 'First link' },
+            { url: '#', text: 'Second link' }
         ];
         return <ul className="nav navbar-nav">{links.map(this.renderLink)}</ul>; 
     }
-    renderLink({url, text}) {
-        return <li><a href={url} className="my-awesome-link">{text}</a></li>; 
+    renderLink = ({url, text}) => {
+        return <li key={text}>
+            <a href={url} className="my-awesome-link" onClick={() =>this.handleClick(text)}>
+                {text}
+            </a>
+            </li>; 
+    }
+    handleClick = (text) => {
+        console.log('clicked link with text: ', text);
     }
 }
 

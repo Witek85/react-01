@@ -11,7 +11,7 @@ class ThirdParent extends Component {
     render() {
         return (
             <div>
-                <form class="form-inline" action="/action_page.php">
+                <form className="form-inline" action="/action_page.php">
                     <div className="form-group">
                         <label htmlFor="term">Term</label>
                         <input type="text" className="form-control" id="term" value={this.state.term} onInput={this.changeTerm} />

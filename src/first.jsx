@@ -18,7 +18,7 @@ class First extends Component {
                 <button className="btn btn-default" onClick={this.onClickHandler}>Click!</button>;
                 <p>{this.state.counter}</p>
                 <p>{this.state.text}</p>
-                <form class="form-inline" action="/action_page.php">
+                <form className="form-inline" action="/action_page.php">
                     <div className="form-group">
                         <label htmlFor="firstName">Imię</label>
                         <input type="text" className="form-control" id="firstName" value={this.state.firstName} onInput={this.changeFirstName} />
