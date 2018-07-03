@@ -9,22 +9,17 @@ import { addToCart } from "./actions/cart";
 function mapStateToProps(state) {
     console.log('state', state)
   return {
+    cartTotal: state.cart.total,
     filteredProducts: state.products.filteredProducts
   }
 }
 
-// function mapDispatchToProps(dispatch) {
-//     return {
-//         filterProducts: query => dispatch(filterProducts(query)),
-//         onAddToCart: item => dispatch(addToCart(item))
-//     }
-// }
-
 function mapDispatchToProps(dispatch) {
     return {
-      fetchProducts: () => dispatch(fetchProducts())
+      fetchProducts: () => dispatch(fetchProducts()),
+      onAddToCart: item => dispatch(addToCart(item))
     }
-  }
+}
 
 class Products extends Component {
 
@@ -32,12 +27,12 @@ class Products extends Component {
         this.props.fetchProducts();
       }
 
-    constructor() {
-        super();
-        this.state = {
-            orderSum: 0
-        };
-    }
+    // constructor() {
+    //     super();
+    //     this.state = {
+    //         orderSum: 0
+    //     };
+    // }
     render() {
         // const products = [
         //     { id: 1, price: 1000, description: 'Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies.' },
@@ -50,7 +45,7 @@ class Products extends Component {
         const allProducts = this.props.filteredProducts;
         return (
             <div>
-                <p>{this.state.orderSum}</p>
+                <p>{this.props.cartTotal}</p>
                 <div className="App-content">{allProducts.map(this.renderProduct)}</div>
             </div>
         )
@@ -67,28 +62,6 @@ class Products extends Component {
             </div>
         )        
     }
-    // addToCart = (price) => {
-    //     this.setState({ orderSum: this.state.orderSum + price })
-    //     console.log('orderSum: ', this.state.orderSum);
-    // }
 }
 
-// export default connect(null, mapDispatchToProps)(App);
-
-// export default Products;
 export default connect(mapStateToProps, mapDispatchToProps)(Products);
-
-
-// import React from 'react';
-// import { connect } from 'react-redux';
-// import { Link } from 'react-router-dom';
-
-// const Header = ({ cartTotal }) => (
-//     <div>
-//       Cart total: ${cartTotal}
-//     </div>
-// );
-
-// export default connect(state => ({
-//   cartTotal: state.cart.total
-// }))(Header);
