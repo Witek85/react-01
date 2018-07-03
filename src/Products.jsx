@@ -2,23 +2,36 @@ import React, { Component } from 'react';
 import Product from './Product'
 import { connect } from 'react-redux';
 import './Products.css';
-import { filterProducts } from './actions/products';
+// import { filterProducts } from './actions/products';
+import { fetchProducts } from "./actions/products";
 import { addToCart } from "./actions/cart";
 
 function mapStateToProps(state) {
+    console.log('state', state)
   return {
     filteredProducts: state.products.filteredProducts
   }
 }
 
+// function mapDispatchToProps(dispatch) {
+//     return {
+//         filterProducts: query => dispatch(filterProducts(query)),
+//         onAddToCart: item => dispatch(addToCart(item))
+//     }
+// }
+
 function mapDispatchToProps(dispatch) {
     return {
-        filterProducts: query => dispatch(filterProducts(query)),
-        onAddToCart: item => dispatch(addToCart(item))
+      fetchProducts: () => dispatch(fetchProducts())
     }
-}
+  }
 
 class Products extends Component {
+
+    componentDidMount() {
+        this.props.fetchProducts();
+      }
+
     constructor() {
         super();
         this.state = {
@@ -59,6 +72,8 @@ class Products extends Component {
     //     console.log('orderSum: ', this.state.orderSum);
     // }
 }
+
+// export default connect(null, mapDispatchToProps)(App);
 
 // export default Products;
 export default connect(mapStateToProps, mapDispatchToProps)(Products);
