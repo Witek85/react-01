@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import First from './First'
-import Second from './Second'
 import './App.css';
+import First from './First';
+import Second from './Second';
 import Header from './Header';
 import Products from './Products';
 import News from './News';
