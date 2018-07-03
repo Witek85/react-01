@@ -3,6 +3,7 @@ import Product from './Product'
 import { connect } from 'react-redux';
 import './Products.css';
 import { filterProducts } from './actions/products';
+import { addToCart } from "./actions/cart";
 
 function mapStateToProps(state) {
   return {
@@ -12,7 +13,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        filterProducts: query => dispatch(filterProducts(query))
+        filterProducts: query => dispatch(filterProducts(query)),
+        onAddToCart: item => dispatch(addToCart(item))
     }
 }
 
@@ -41,16 +43,21 @@ class Products extends Component {
         )
     }
     renderProduct = ({id, price, description}) => {
+        const handleAddToCart = (newItem) => {
+            console.log('handle add', newItem);
+            this.props.onAddToCart(newItem);
+        }
+        
         return (
             <div key={id} className="App-product">
-                <Product id={id} price={price} description={description} addToCart={this.addToCart} />
+                <Product id={id} price={price} description={description} onAddToCart={handleAddToCart} />
             </div>
         )        
     }
-    addToCart = (price) => {
-        this.setState({ orderSum: this.state.orderSum + price })
-        console.log('orderSum: ', this.state.orderSum);
-    }
+    // addToCart = (price) => {
+    //     this.setState({ orderSum: this.state.orderSum + price })
+    //     console.log('orderSum: ', this.state.orderSum);
+    // }
 }
 
 // export default Products;
