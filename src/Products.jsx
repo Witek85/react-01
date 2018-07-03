@@ -62,3 +62,18 @@ class Products extends Component {
 
 // export default Products;
 export default connect(mapStateToProps, mapDispatchToProps)(Products);
+
+
+// import React from 'react';
+// import { connect } from 'react-redux';
+// import { Link } from 'react-router-dom';
+
+// const Header = ({ cartTotal }) => (
+//     <div>
+//       Cart total: ${cartTotal}
+//     </div>
+// );
+
+// export default connect(state => ({
+//   cartTotal: state.cart.total
+// }))(Header);
