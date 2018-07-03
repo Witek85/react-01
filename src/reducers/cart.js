@@ -9,9 +9,10 @@ const cartReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case ADD_TO_CART:
       const { item } = action.payload;
+      console.log('ADD_TO_CART', item);
       return {
         ...state,
-        total: state.total + item.price
+        total: state.total + item
       };
     default:
       return state
