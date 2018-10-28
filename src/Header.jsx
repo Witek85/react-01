@@ -9,7 +9,8 @@ class Header extends Component {
             { url: '#', text: 'First', page:'First' },
             { url: '#', text: 'Second', page:'Second' },
             { url: '#', text: 'ThirdParent', page:'ThirdParent' },
-            { url: '#', text: 'Api1', page:'Api1' }
+            { url: '#', text: 'Api1', page:'Api1' },
+            { url: '#', text: 'TodoApp', page:'TodoApp' }
         ];
         return (
             <nav className="navbar navbar-default navbar-static-top">

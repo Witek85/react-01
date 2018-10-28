@@ -9,6 +9,7 @@ import Products from './Products';
 import News from './News';
 import ThirdParent from './Third_parent';
 import Api1 from './Api1';
+import TodoApp from './TodoApp';
 import { fetchProducts } from "./actions/products";
 
 class App extends Component {
@@ -33,6 +34,7 @@ class App extends Component {
                 <Route path="/Second" render={(props) => <Second {...props} title="this is title" content="this is content" /> } />
                 <Route path="/ThirdParent" component={ThirdParent} />
                 <Route path="/Api1" component={Api1} />
+                <Route path="/TodoApp" component={TodoApp} />
                 <Route render={() => <div>Sorry, page is not found</div>}/>
               </Switch>
             </div>
