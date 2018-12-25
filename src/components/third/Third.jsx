@@ -8,6 +8,12 @@ class Third extends Component {
             term: ""
         };
     }
+    changeTerm = (e) => {
+        this.setState({term: e.target.value});
+    }
+    callbackParent = (childData) => {
+        console.log('childData', childData);
+    }
     render() {
         return (
             <div>
@@ -17,14 +23,10 @@ class Third extends Component {
                         <input type="text" className="form-control" id="term" defaultValue={this.state.term} onInput={this.changeTerm} />
                     </div>
                 </form>
-                <ThirdChild term={this.state.term} />
+                <ThirdChild callbackChild={this.callbackParent} term={this.state.term} />
             </div>
         );
-    }
-    changeTerm = (e) => {
-        this.setState({term: e.target.value});
-    }
-    
+    }    
 }
 
 export default Third;
