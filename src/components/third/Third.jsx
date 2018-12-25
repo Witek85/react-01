@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import ThirdChild from './Third_child';
+import ThirdChildZwei from './Third_child_zwei';
 
 class Third extends Component {
     constructor() {
         super();
         this.state = {
-            term: ""
+            term: "",
+            sibling: ""
         };
     }
     changeTerm = (e) => {
@@ -13,6 +15,7 @@ class Third extends Component {
     }
     callbackParent = (childData) => {
         console.log('childData', childData);
+        this.setState({sibling: childData});
     }
     render() {
         return (
@@ -24,6 +27,7 @@ class Third extends Component {
                     </div>
                 </form>
                 <ThirdChild callbackChild={this.callbackParent} term={this.state.term} />
+                <ThirdChildZwei sibling={this.state.sibling} />
             </div>
         );
     }    
