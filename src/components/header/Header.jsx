@@ -8,7 +8,7 @@ class Header extends Component {
             { url: '#', text: 'News', page:'News' },
             { url: '#', text: 'First', page:'First' },
             { url: '#', text: 'Second', page:'Second' },
-            { url: '#', text: 'ThirdParent', page:'ThirdParent' },
+            { url: '#', text: 'Third', page:'Third' },
             { url: '#', text: 'Api1', page:'Api1' },
             { url: '#', text: 'TodoApp', page:'TodoApp' }
         ];

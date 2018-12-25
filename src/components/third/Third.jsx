@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ThirdChild from './Third_child';
 
-class ThirdParent extends Component {
+class Third extends Component {
     constructor() {
         super();
         this.state = {
@@ -27,4 +27,4 @@ class ThirdParent extends Component {
     
 }
 
-export default ThirdParent;
+export default Third;
