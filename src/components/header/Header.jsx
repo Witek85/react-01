@@ -10,7 +10,8 @@ class Header extends Component {
             { url: '#', text: 'Second', page:'Second' },
             { url: '#', text: 'Third', page:'Third' },
             { url: '#', text: 'Api1', page:'Api1' },
-            { url: '#', text: 'TodoApp', page:'TodoApp' }
+            { url: '#', text: 'TodoApp', page:'TodoApp' },
+            { url: '#', text: 'InputOutput', page:'InputOutput' }
         ];
         return (
             <nav className="navbar navbar-default navbar-static-top">

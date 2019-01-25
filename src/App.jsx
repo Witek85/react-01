@@ -10,6 +10,7 @@ import News from './components/news/News';
 import Third from './components/third/Third';
 import Api1 from './components/api1/Api1';
 import TodoApp from './components/todoapp/TodoApp';
+import InputOutput from './components/inputOutput/inputOutput';
 import { fetchProducts } from "./actions/products";
 
 class App extends Component {
@@ -35,6 +36,7 @@ class App extends Component {
                 <Route path="/Third" component={Third} />
                 <Route path="/Api1" component={Api1} />
                 <Route path="/TodoApp" component={TodoApp} />
+                <Route path="/InputOutput" component={InputOutput} />
                 <Route render={() => <div>Sorry, page is not found</div>}/>
               </Switch>
             </div>
