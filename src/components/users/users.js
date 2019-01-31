@@ -1,16 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Button } from 'react-bootstrap';
-import { incrementCounter } from '../../actions/counter';
+import { incrementCounter, decrementCounter } from '../../actions/counter';
 
 const users = (props) => {
   const onIncrementHandler = () => {
     props.onIncrement();
   }
+  const onDecrementHandler = () => {
+    props.onDecrement();
+  }
   return (
   <div>
     {props.counter}<br/>
     <Button onClick={onIncrementHandler} >+1</Button>
+    <Button onClick={onDecrementHandler} >-1</Button>
   </div>
   )
 }
@@ -25,6 +29,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     onIncrement: () => dispatch(incrementCounter()),
+    onDecrement: () => dispatch(decrementCounter()),
   }
 }
 
