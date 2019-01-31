@@ -1,14 +1,5 @@
 const initialState = {
-  todos: [{
-    id: 1,
-    text: 'action.text',
-    completed: false,
-  },
-  {
-    id: 2,
-    text: 'action.text 2',
-    completed: false,
-  }]
+  todos: []
 }
 
 const todos = (state = initialState, action) => {
@@ -16,12 +7,7 @@ const todos = (state = initialState, action) => {
     case 'ADD_TODO':
       return {
         ...state,
-        todos: [{
-          id: 1,
-          text: 'test',
-          completed: false,
-        }]
-
+        todos: [...state.todos, action.payload]
       };
     case 'TOGGLE_TODO':
       if (state.id !== action.id) {

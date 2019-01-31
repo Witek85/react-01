@@ -2,21 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addTodo } from '../../actions/todos'
 
-          // onClick={() => {
-          //   store.dispatch({
-          //     type: 'ADD_TODO',
-          //     text: this.input.value,
-          //     id: nextTodoId++,
-          //   });
-          //   this.input.value = '';
-          // }}
-
-
 let nextTodoId = 0;
 class TodoApp extends Component {
 
   onClickHandler = () => {
-    this.props.onAddTodo();
+    const todo = {
+      id: 1,
+      text: 'todo',
+      completed: false,
+    }
+    this.props.onAddTodo(todo);
   }
 
   render() {
@@ -45,7 +40,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    onAddTodo: () => dispatch(addTodo()),
+    onAddTodo: (todo) => dispatch(addTodo(todo)),
   }
 }
 
