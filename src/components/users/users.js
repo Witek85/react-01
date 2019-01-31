@@ -1,19 +1,31 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { Button } from 'react-bootstrap';
+import { incrementCounter } from '../../actions/counter';
 
-const users = () => (
+const users = (props) => {
+  const onIncrementHandler = () => {
+    props.onIncrement();
+  }
+  return (
   <div>
-    <ol>
-      {/* <li>Add Routes to load "Users" and "Courses" on different pages (by entering a URL, without Links)</li> */}
-      {/* <li>Add a simple navigation with two links => One leading to "Users", one leading to "Courses"</li> */}
-      {/* <li>Make the courses in "Courses" clickable by adding a link and load the "Course" component in the place of "Courses" (without passing any data for now)</li> */}
-      {/* <li>Pass the course ID to the "Course" page and output it there</li> */}
-      {/* <li>Pass the course title to the "Course" page - pass it as a param or score bonus points by passing it as query params (you need to manually parse them though!)</li> */}
-      {/* <li>Load the "Course" component as a nested component of "Courses"</li> */}
-      <li>Add a 404 error page and render it for any unknown routes</li>
-      <li>Redirect requests to /all-courses to /courses (=> Your "Courses" page)</li>
-    </ol>
+    {props.counter}<br/>
+    <Button onClick={onIncrementHandler} >+1</Button>
   </div>
+  )
+}
 
-)
+function mapStateToProps(state) {
+  console.log('state', state)
+  return {
+    counter: state.counter.counter,
+  }
+}
 
-export default users;
+function mapDispatchToProps(dispatch) {
+  return {
+    onIncrement: () => dispatch(incrementCounter()),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(users);
