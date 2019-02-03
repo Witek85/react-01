@@ -9,6 +9,15 @@ const todos = (state = initialState, action) => {
         ...state,
         todos: [...state.todos, action.payload]
       };
+    case 'EDIT_TODO':
+      return {
+        ...state,
+      };
+    case 'DELETE_TODO':
+      return {
+        ...state,
+        todos: state.todos.filter(item => item.id !== action.payload),
+      };
     case 'TOGGLE_TODO':
       if (state.id !== action.id) {
         return state;
