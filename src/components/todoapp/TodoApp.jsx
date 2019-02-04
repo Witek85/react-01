@@ -8,6 +8,7 @@ class TodoApp extends Component {
   state = {
     newTodo: "",
     editTodo: "",
+    initEditTodo: "",
     editMode: false
   }
 
@@ -32,13 +33,13 @@ class TodoApp extends Component {
   }
   
   onStartEditHandler = (id, value) => {
-    if (this.state.editMode) {
-      alert('edit mode')
-    } else {
-      this.setState({editTodo: value, editMode: true});
-      this.props.onStartEditTodo(id);
-    }
+    this.setState({editTodo: value, initEditTodo: value, editMode: true});
+    this.props.onStartEditTodo(id);
+  }
 
+  onAbortEditHandler = (id, value) => {
+    this.setState({editMode: false});
+    this.props.onEditTodo({"id": id, "newTodo": this.state.initEditTodo});
   }
 
   onToggleHandler = (id) => {
@@ -96,8 +97,11 @@ class TodoApp extends Component {
                     <ButtonGroup className="pull-right">
                       <Button bsSize="small" onClick={() => this.onToggleHandler(todo.id)} ><Glyphicon glyph={todo.completed ? "star" : "star-empty"} /></Button>
                       {todo.edited ? 
-                        <Button bsSize="small" onClick={() => this.onEditHandler(todo.id, this.state.editTodo)} >Save</Button> :
-                        <Button bsSize="small" onClick={() => this.onStartEditHandler(todo.id, todo.text)} >Edit</Button>
+                        <React.Fragment>
+                          <Button bsSize="small" onClick={() => this.onAbortEditHandler(todo.id)} >Abort</Button>
+                          <Button bsSize="small" onClick={() => this.onEditHandler(todo.id, this.state.editTodo)} >Save</Button>
+                        </React.Fragment> :
+                        <Button bsSize="small" disabled={this.state.editMode} onClick={() => this.onStartEditHandler(todo.id, todo.text)} >Edit</Button>
                       }
                       <Button bsSize="small" onClick={() => this.onDeleteHandler(todo.id)} >Delete</Button>
                     </ButtonGroup>
