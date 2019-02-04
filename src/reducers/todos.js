@@ -12,6 +12,7 @@ const todos = (state = initialState, action) => {
     case 'EDIT_TODO':
       return {
         ...state,
+        todos: state.todos.map((content, i) => i === action.payload.id - 1 ? {...content, text: action.payload.newTodo}: content)
       };
     case 'DELETE_TODO':
       return {

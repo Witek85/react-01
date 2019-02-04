@@ -10,7 +10,6 @@ class TodoApp extends Component {
   }
 
   onClickHandler = () => {
-    
     const todoId = this.props.todos.length > 0 ? this.props.todos[this.props.todos.length - 1].id + 1 : 1
     const todo = {
       id: todoId,
@@ -20,14 +19,11 @@ class TodoApp extends Component {
     this.props.onAddTodo(todo);
   }
 
-  onEditHandler = (id) => {
-    console.log('onEditHandler', id);
-    this.props.onEditTodo(id);
+  onEditHandler = (id, newTodo) => {
+    this.props.onEditTodo({"id": id, "newTodo": newTodo});
   }
 
-  onDeleteHandler = (id
-    ) => {
-    console.log('onDeleteHandler', id);
+  onDeleteHandler = (id) => {
     this.props.onDeleteTodo(id);
   }
 
@@ -43,7 +39,7 @@ class TodoApp extends Component {
         <ul>
           {this.props.todos.map(todo => (
             <li key={todo.id}>{todo.text} 
-            <button onClick={() => this.onEditHandler(todo.id)} >Edit</button>
+            <button onClick={() => this.onEditHandler(todo.id, "edited")} >Edit</button>
             <button onClick={() => this.onDeleteHandler(todo.id)} >Delete</button>
             </li>
           ))}
