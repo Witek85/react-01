@@ -81,6 +81,9 @@ class TodoApp extends Component {
             {this.props.todos.map(todo => (
               <ListGroupItem key={todo.id} bsStyle={todo.completed ? "success" : null}>
                 <Row>
+                  <Col xs={1}>
+                    <Button bsSize="small" onClick={() => this.onToggleHandler(todo.id)} ><Glyphicon glyph={todo.completed ? "star" : "star-empty"} /></Button>
+                  </Col>
                   <Col xs={8}>
                     {todo.edited ? 
                       <FormControl
@@ -93,9 +96,8 @@ class TodoApp extends Component {
                       todo.text
                     } 
                   </Col>
-                  <Col xs={4}>
+                  <Col xs={3}>
                     <ButtonGroup className="pull-right">
-                      <Button bsSize="small" onClick={() => this.onToggleHandler(todo.id)} ><Glyphicon glyph={todo.completed ? "star" : "star-empty"} /></Button>
                       {todo.edited ? 
                         <React.Fragment>
                           <Button bsSize="small" onClick={() => this.onAbortEditHandler(todo.id)} >Abort</Button>
