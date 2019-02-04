@@ -7,7 +7,8 @@ class TodoApp extends Component {
 
   state = {
     newTodo: "",
-    editTodo: ""
+    editTodo: "",
+    editMode: false
   }
 
   onChangeInputHandler = (e) => {
@@ -31,8 +32,13 @@ class TodoApp extends Component {
   }
   
   onStartEditHandler = (id, value) => {
-    this.setState({editTodo: value});
-    this.props.onStartEditTodo(id);
+    if (this.state.editMode) {
+      alert('edit mode')
+    } else {
+      this.setState({editTodo: value, editMode: true});
+      this.props.onStartEditTodo(id);
+    }
+
   }
 
   onToggleHandler = (id) => {
@@ -40,6 +46,7 @@ class TodoApp extends Component {
   }
 
   onEditHandler = (id, newTodo) => {
+    this.setState({editMode: false});
     this.props.onEditTodo({"id": id, "newTodo": newTodo});
   }
 
