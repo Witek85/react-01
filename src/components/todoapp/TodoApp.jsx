@@ -1,22 +1,27 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Button, FormControl, Grid, Row, Col} from 'react-bootstrap';
 import { addTodo, editTodo, deleteTodo } from '../../actions/todos'
 
-let nextTodoId = 0;
 class TodoApp extends Component {
 
   state = {
+    newTodo: ""
+  }
 
+  onChangeInputHandler = (e) => {
+    this.setState({newTodo: e.target.value});
   }
 
   onClickHandler = () => {
-    const todoId = this.props.todos.length > 0 ? this.props.todos[this.props.todos.length - 1].id + 1 : 1
+    const todoId = this.props.todos.length > 0 ? this.props.todos[this.props.todos.length - 1].id + 1 : 0
     const todo = {
       id: todoId,
-      text: 'todo',
+      text: this.state.newTodo,
       completed: false,
     }
     this.props.onAddTodo(todo);
+    this.setState({newTodo: ""})
   }
 
   onEditHandler = (id, newTodo) => {
@@ -28,19 +33,31 @@ class TodoApp extends Component {
   }
 
   render() {
+    const isDisabled = this.state.newTodo === '';
+
     return (
       <div>
-        <input
-          ref={node => {
-            this.input = node;
-          }}
-        />
-        <button onClick={this.onClickHandler} >Add Todo</button>
+        <Grid>
+          <Row className="show-grid">
+            <Col xs={4}>
+              <FormControl
+                ref={node => {this.input = node}}
+                type="text"
+                value={this.state.newTodo}
+                placeholder="Enter todo"
+                onChange={this.onChangeInputHandler}
+              />
+            </Col>
+            <Col xs={2}>
+              <Button onClick={this.onClickHandler} disabled={isDisabled}>Add Todo</Button>
+            </Col>
+          </Row>
+        </Grid>
         <ul>
           {this.props.todos.map(todo => (
             <li key={todo.id}>{todo.text} 
-            <button onClick={() => this.onEditHandler(todo.id, "edited")} >Edit</button>
-            <button onClick={() => this.onDeleteHandler(todo.id)} >Delete</button>
+            <Button onClick={() => this.onEditHandler(todo.id, "edited")} >Edit</Button>
+            <Button onClick={() => this.onDeleteHandler(todo.id)} >Delete</Button>
             </li>
           ))}
         </ul>
