@@ -15,6 +15,7 @@ import Lists from './components/lists/lists';
 import users from './components/users/users';
 import courses from './components/courses/courses';
 import course from './components/courses/course/course';
+import iss from './components/iss/iss';
 import { fetchProducts } from "./actions/products";
 
 class App extends Component {
@@ -45,6 +46,7 @@ class App extends Component {
                 <Route path="/Users" component={users} />
                 <Route path='/course/:id' exact component={course} />
                 <Route path="/Courses" component={courses} />
+                <Route path="/iss" component={iss} />
                 <Route render={() => <div>Sorry, page is not found</div>}/>
               </Switch>
             </div>
