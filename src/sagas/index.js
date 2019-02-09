@@ -2,7 +2,7 @@ import { call, put, takeEvery, takeLatest } from 'redux-saga/effects'
 
 import Api, { normalizeFirebaseResponse } from '../Api2';
 import { PRODUCTS_FETCH_FAILED, PRODUCTS_FETCH_REQUESTED, PRODUCTS_FETCH_SUCCEEDED } from '../constants/products';
-import { ISS_FETCH_INIT, ISS_FETCH_SUCCESS, ISS_FETCH_FAILED, GOOGLE_FETCH_INIT, GOOGLE_FETCH_SUCCESS } from '../constants/iss';
+import { ISS_FETCH_INIT, ISS_FETCH_SUCCESS, ISS_FETCH_FAILED, GOOGLE_FETCH_INIT, GOOGLE_FETCH_SUCCESS, GOOGLE_FETCH_FAILED } from '../constants/iss';
 import axios from 'axios';
 
 // worker Saga: will be fired on PRODUCTS_FETCH_REQUESTED actions
@@ -45,10 +45,13 @@ function* fetchGoogle(action) {
     const response = yield axios.get('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + 
     action.payload.latitude + ',' + action.payload.longitude + 
     '&key=AIzaSyAI_3R5zXkHy8eZO0zw9nO1EW7bijkB78I');
-    yield console.log('axios fetchGoogle', response);
-    yield put({type: GOOGLE_FETCH_SUCCESS, payload: response.data});
+    if (response.data.status !== "REQUEST_DENIED") {
+      yield put({type: GOOGLE_FETCH_SUCCESS, payload: response.data});
+    } else {
+      yield put({type: GOOGLE_FETCH_FAILED, message: response.data.error_message});
+    }
   } catch (e) {
-    // yield put({type: GOOGLE_FETCH_FAILED, message: e.message});
+    yield put({type: GOOGLE_FETCH_FAILED, message: e.message});
   } 
 }
 

@@ -1,5 +1,6 @@
 const initialState = {
-    issData: {}
+    issData: {},
+    googleData: {}
   }
   
   const iss = (state = initialState, action) => {
@@ -20,12 +21,12 @@ const initialState = {
         console.log('GOOGLE_FETCH_SUCCESS', action.payload);
         return {
             ...state,
-            // issDataError: action.message
+            googleData: action.payload
         };
         case 'GOOGLE_FETCH_FAILED':
-        // TODO
         return {
             ...state,
+            issDataError: action.message
         };
       default:
         return state;
