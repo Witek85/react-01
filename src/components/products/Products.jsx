@@ -25,6 +25,7 @@ class Products extends Component {
 
     componentDidMount() {
         this.props.fetchProducts();
+        console.log(this.props.filteredProducts)
       }
 
     // constructor() {
@@ -50,7 +51,7 @@ class Products extends Component {
             </div>
         )
     }
-    renderProduct = ({id, price, description}) => {
+    renderProduct = ({title, id, price, description}) => {
         const handleAddToCart = (newItem) => {
             console.log('handle add', newItem);
             this.props.onAddToCart(newItem);
@@ -58,7 +59,7 @@ class Products extends Component {
         
         return (
             <div key={id} className="App-product">
-                <Product id={id} price={price} description={description} onAddToCart={handleAddToCart} />
+                <Product title={title} id={id} price={price} description={description} onAddToCart={handleAddToCart} />
             </div>
         )        
     }
