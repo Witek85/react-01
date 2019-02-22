@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import './Products.css';
 import { fetchProducts, filterProducts } from "../../actions/products";
 import { addToCart } from "../../actions/cart";
+import { Grid, Row, Col } from 'react-bootstrap';
+
 
 class Products extends Component {
 
@@ -19,11 +21,17 @@ class Products extends Component {
         console.log(this.props.filteredProducts);
         const allProducts = this.props.filteredProducts;
         return (
-            <div>
+          <Grid>
+            <Row>
+              <Col xs={4}>
                 <p>Price: {this.props.cartTotal}</p>
                 <ProductInput handleChange={this.onChangeHandler} />
-                <div className="App-content">{allProducts.map(this.renderProduct)}</div>
-            </div>
+              </Col>
+            </Row>
+            <Row>
+              <div className="App-content">{allProducts.map(this.renderProduct)}</div>
+            </Row>
+          </Grid>
         )
     }
     renderProduct = ({title, id, price, description}) => {

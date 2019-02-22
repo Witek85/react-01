@@ -3,7 +3,7 @@ import React from 'react';
 const ProductInput = (props) => {
   return (
     <div>
-      <input type="text" name="name" onChange={(e) => props.handleChange(e)} />
+      <input className="form-control" type="text" name="name" onChange={(e) => props.handleChange(e)} />
     </div>
   )
 }
