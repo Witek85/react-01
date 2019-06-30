@@ -15,7 +15,8 @@ class Header extends Component {
             { url: '#', text: 'Lists', page:'/Lists' },
             { url: '#', text: 'Users', page:'/users' },
             { url: '#', text: 'Courses', page:'/courses' },
-            { url: '#', text: 'ISS', page:'/iss' }
+            { url: '#', text: 'ISS', page:'/iss' },
+            { url: '#', text: 'Reduce', page:'/reduce' }
         ];
         return (
             <nav className="navbar navbar-default navbar-static-top">

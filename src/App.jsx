@@ -16,6 +16,7 @@ import Lists from './components/lists/lists';
 import courses from './components/courses/courses';
 import course from './components/courses/course/course';
 import iss from './components/iss/iss';
+import Reduce from './components/reduce/reduce';
 import { fetchProducts } from "./actions/products";
 
 const users = lazy(() => import('./components/users/users'));
@@ -50,6 +51,7 @@ class App extends Component {
                   <Route path='/course/:id' exact component={course} />
                   <Route path="/Courses" component={courses} />
                   <Route path="/iss" component={iss} />
+                  <Route path="/reduce" component={Reduce} />
                   <Route render={() => <div>Sorry, page is not found</div>}/>
                 </Switch>
               </div>
