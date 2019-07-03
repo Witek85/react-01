@@ -28,8 +28,18 @@ class Reduce extends Component {
 
         const total = arr1.reduce(this.addAllItems, 0);
         const totalVotes = votes.reduce(this.countVotes, {});
+        const doubled = arr1.reduce((acc, val) => {
+            acc.push(val * 2);
+            return acc;
+        }, []);
+        const evens = arr1.reduce((acc, val) => {
+            if (val % 2 === 0) acc.push(val);
+            return acc;
+        }, []);
 
         console.log(totalVotes);
+        console.log(doubled);
+        console.log(evens);
 
         return (
             <div>
