@@ -25,10 +25,11 @@ class Reduce extends Component {
     render() {
         const arr1 = [1,2,3,4,5,6,7,8,9];
         const votes = ['angular', 'react', 'vue', 'angular', 'react', 'vue', 'react', 'vue','vanilla'];
+        const arrays = [[1,2,3], [4,5,6], [7,8,9]]
 
         const total = arr1.reduce(this.addAllItems, 0);
         const totalVotes = votes.reduce(this.countVotes, {});
-        const doubled = arr1.reduce((acc, val) => {
+        const doubled = arr1.reduce((acc, val, index, array) => {
             acc.push(val * 2);
             return acc;
         }, []);
@@ -36,10 +37,12 @@ class Reduce extends Component {
             if (val % 2 === 0) acc.push(val);
             return acc;
         }, []);
+        const flattenArray = arrays.reduce((acc, val) => acc.concat(val), [])
 
         console.log(totalVotes);
         console.log(doubled);
         console.log(evens);
+        console.log(flattenArray);
 
         return (
             <div>
